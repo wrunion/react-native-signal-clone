@@ -16,7 +16,11 @@ const RegisterScreen = ({ navigation }) => {
     // })
   }, [navigation]);
 
-  const register = () => {};
+  const register = () => {
+    // TODO: create a function to register the user in async local storage
+    // registerNewUser({email, password, name, imageUrl})
+    console.log('form submitted. data entered: ', email, password, name, imageUrl);
+  };
 
   return(
     <KeyboardAvoidingView behavior='padding' style={styles.container}>
@@ -34,7 +38,7 @@ const RegisterScreen = ({ navigation }) => {
           onSubmitEditing={register}
         />
         <Button 
-          onPress={register}
+          onPress={() => navigation.navigate('Login')}
           title='Register'
           raised
         />

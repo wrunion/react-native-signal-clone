@@ -1,0 +1,51 @@
+import React, { useLayoutEffect } from 'react';
+import { View, SafeAreaView, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
+import { SimpleLineIcons } from '@expo/vector-icons';
+import { Avatar } from '@rneui/themed'; 
+import CustomListItem from '../components/CustomListItem';
+
+import { DEFAULT_USER_ICON_URI } from '../utils/utils';
+
+const HomeScreen = ({ navigation }) => {
+
+  const logoutUser = () => {
+    navigation.replace('Login');
+  }
+
+  const enterChat = (id, chatName) => {
+    navigation.navigate('Chat')
+  }
+
+  useLayoutEffect(() => {
+    navigation.setOptions({ 
+      title: 'Contacts', 
+      headerStyle: { backgroundColor: 'white' },
+      headerTitleStyle: { color: 'black' },
+      headerTintColor: 'black',
+      headerLeft: () => (
+        <View>
+          <TouchableOpacity activeOpacity={0.5} onPress={logoutUser}>
+            <Avatar source={{ uri: DEFAULT_USER_ICON_URI }} />
+          </TouchableOpacity>
+        </View>
+      ),
+      headerRight: () => (
+        <View>
+          <TouchableOpacity activeOpacity={0.5}>
+            <SimpleLineIcons name='pencil' size={24} color='black' onPress={enterChat} />
+          </TouchableOpacity>
+        </View>
+      )
+    })
+  }, [navigation]);
+
+  return (
+    <SafeAreaView>
+      <ScrollView>
+        <CustomListItem />
+      </ScrollView>
+    </SafeAreaView>
+  )
+};
+
+export default HomeScreen;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, KeyboardAvoidingView } from 'react-native';
 import { Button, Input, Image } from '@rneui/themed'; // react-native-elements need to be styled with "containerStyle"
 import { StatusBar} from 'expo-status-bar';
@@ -9,7 +9,13 @@ const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const signIn = () => { };
+  useEffect(() => {
+    // TODO: reach out to async storage to see if there's a user already
+    let user = false;
+    if (user) {
+      navigation.replace('Home');
+    }
+  }, []);
 
   return (
     <KeyboardAvoidingView behavior='padding' style={styles.container}>
@@ -22,9 +28,9 @@ const LoginScreen = ({ navigation }) => {
       </View>
 
       <Button 
+        onPress={() => navigation.replace('Home')}
         containerStyle={styles.button} 
         title='Login' 
-        onPress={signIn} 
       /> 
       <Button 
         onPress={() => navigation.navigate('Register')}
