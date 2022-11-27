@@ -40,8 +40,6 @@ const HomeScreen = ({ navigation }) => {
     })
   }, [navigation]);
 
-  console.log(CHAT_LOGS)
-
   return (
     <SafeAreaView>
       <ScrollView>
@@ -53,8 +51,5 @@ const HomeScreen = ({ navigation }) => {
     </SafeAreaView>
   )
 };
-
-// id, title, subtitle, avatarURI
-
 
 export default HomeScreen;

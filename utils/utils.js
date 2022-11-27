@@ -1,12 +1,11 @@
 import axios from 'axios';
 
-export const SIGNAL_LOGO_URI = 'https://seeklogo.com/images/S/signal-logo-20A1616F60-seeklogo.com.png'
+export const SIGNAL_LOGO_URI = 'https://raw.githubusercontent.com/wrunion/react-native-signal-clone/main/assets/signal-logo-2.png'
 export const DEFAULT_USER_ICON_URI = 'https://raw.githubusercontent.com/wrunion/react-native-signal-clone/main/assets/user-icon-default.jpg'
 export const PRIMARY_BLACK = '#2F3136'
 export const PRIMARY_BLUE = '#3F6AE5'
 export const BACKGROUND_GREY = '#ECECEC'
 
-// API documentation: https://brainshop.ai/node/262042
 export const sendMessage = async (message) => {
   try {
     const userId = 'testUser1'
@@ -14,7 +13,6 @@ export const sendMessage = async (message) => {
     const response = await axios.get(uri);
     return response.data.cnt;
   } catch (error) {
-    // If something goes wrong with the API call, call the local chatbot function instead.
     const response = sendMessageDev();
     return response;
   }
@@ -22,7 +20,6 @@ export const sendMessage = async (message) => {
 
 const generateRandomNumber = () => Math.floor(Math.random() * 10);
 
-// Smalltalk source: https://github.com/alyssaong1/botframework-smalltalk/blob/master/lib/smalltalk.js
 const smalltalkPhrases = [
   "How is your day?",
   "Do you have any pets?",
@@ -36,21 +33,20 @@ const smalltalkPhrases = [
   "What's your favorite TV show?"
 ]
 
-const greetings = [
-  "Hi there, friend!",
-  "Hey!",
-  "Good day!",
-  "Howdy."
-]
-
-const goodbyes = [
-  "See you soon!",
-  "Bye-bye!",
-  "Till next time!",
-  "Bye."
-]
-
 export const sendMessageDev = () => {
   const index = generateRandomNumber();
   return smalltalkPhrases[index];
 }
+
+export const getTimestamp = () => {
+  let date = new Date();
+  let hour = date.getHours();
+  let minutes = date.getMinutes();
+  return `${hour <= 12 ? hour : hour - 12}:${minutes < 10 ? '0'+ minutes : minutes } ${hour <= 12 ? 'am' : 'pm'}`;
+}
+
+/*
+Resources:
+- Local chatbox text source: https://github.com/alyssaong1/botframework-smalltalk/blob/master/lib/smalltalk.js
+- Remote chatbot API documentation: https://brainshop.ai/node/262042
+*/

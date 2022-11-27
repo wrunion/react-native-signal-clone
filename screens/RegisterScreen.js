@@ -11,15 +11,13 @@ const RegisterScreen = ({ navigation }) => {
   const [imageUrl, setImageUrl] = useState('');
 
   useLayoutEffect(() => {
-    // navigation.setOptions({
-    //   headerBackTitle: 'Back to Login'
-    // })
+    navigation.setOptions({
+      headerBackTitle: 'Login'
+    })
   }, [navigation]);
 
-  const register = () => {
-    // TODO: create a function to register the user in async local storage
-    // registerNewUser({email, password, name, imageUrl})
-    console.log('form submitted. data entered: ', email, password, name, imageUrl);
+  const register = () => { 
+    navigation.navigate('Login') 
   };
 
   return(
@@ -38,7 +36,7 @@ const RegisterScreen = ({ navigation }) => {
           onSubmitEditing={register}
         />
         <Button 
-          onPress={() => navigation.navigate('Login')}
+          onPress={register}
           title='Register'
           raised
         />

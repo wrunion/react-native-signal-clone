@@ -1,46 +1,45 @@
-import React, { useLayoutEffect, useState } from 'react'
-import { StyleSheet, Text, TextInput, 
+import React, { useLayoutEffect, useState, useEffect } from 'react'
+import { 
+  StyleSheet, Text, TextInput, 
   SafeAreaView, Platform, Keyboard, 
   KeyboardAvoidingView, View, ScrollView, 
-  TouchableOpacity, TouchableWithoutFeedback,
-  contentContainerStyle 
+  TouchableOpacity, TouchableWithoutFeedback
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { Avatar } from '@rneui/themed'; 
-import { Ionicons, SimpleLineIcons, AntIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 
-import { sendMessage, sendMessageDev, PRIMARY_BLUE, BACKGROUND_GREY } from '../utils/utils'
+import { sendMessage, sendMessageDev, PRIMARY_BLUE, BACKGROUND_GREY, getTimestamp } from '../utils/utils'
 
-  let sampleMessages = [
-    { content: 'Hello! How are you?', isSender: true, id: 1, timestamp: '9:45 am' }
-  ];
-
-
-const ChatScreen = ({ navigation, route }) => {
-  // access params via route.params.chatname
+const ChatScreen = ({ navigation }) => {
 
   const [input, setInput] = useState('');
   const [timestamp, setTimestamp] = useState('9:32 am');
-  const [messages, setMessages] = useState(sampleMessages);
+  const [messages, setMessages] = useState([]);
 
   const handleSendMessage = async () => {
     Keyboard.dismiss();
+
     if (!input) {
       alert('Please add text to the text box.');
       return;
     }
     setMessages((messages) => [...messages, { content: input, isSender: false, timestamp }]);
 
-    // To hit the chatbot API
+    const response = sendMessageDev();
     // const response = await sendMessage(input);
-    // setMessages((messages) => [...messages, { content: response, isSender: true, timestamp }]);
-
-    // Tor testing and development, since the chatbot API has a limit of 150 requests/month
-    const testResponse = sendMessageDev();
-    setMessages((messages) => [...messages, { content: testResponse, isSender: true, timestamp }]);
+    setMessages((messages) => [...messages, { content: response, isSender: true, timestamp }]);
 
     setInput('');
   }
+
+  useEffect(() => {
+    let timestamp = getTimestamp();
+    setTimestamp(timestamp);
+  }, [messages]);
+
+  useEffect(() => {
+    setMessages([{ content: 'Hello! How are you?', isSender: true, id: 1, timestamp }]);
+  }, []);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -61,7 +60,7 @@ const ChatScreen = ({ navigation, route }) => {
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <>
           <ScrollView>
-          {messages.map((message, index) => (
+          {messages?.map((message, index) => (
             message.isSender ? 
               <View style={styles.sender} key={index}>
                 <Text style={styles.senderText}>{message.content}</Text>
@@ -148,15 +147,4 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   receiverText: {}
-})
-
-/*
-  TODO BEFORE DEMO: 
-  - fix the auto-focus issue on the chat screen [ ]
-  - if time: have the chat screen auto-scroll on chat
-  - TEST ON DIFFERENT DEVICES INCLUDING ANDROID
-  - figure out how to deploy [ ]
-  - add avatars [ ]
-  - add a README [ ]
-  - clean up code files
-*/
+});

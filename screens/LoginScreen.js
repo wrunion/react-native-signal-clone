@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, KeyboardAvoidingView } from 'react-native';
-import { Button, Input, Image } from '@rneui/themed'; // react-native-elements need to be styled with "containerStyle"
+import { StyleSheet, View, KeyboardAvoidingView } from 'react-native';
+import { Button, Input, Image } from '@rneui/themed'; 
 import { StatusBar} from 'expo-status-bar';
 
 import { SIGNAL_LOGO_URI } from '../utils/utils'
@@ -10,12 +10,15 @@ const LoginScreen = ({ navigation }) => {
   const [password, setPassword] = useState('');
 
   useEffect(() => {
-    // TODO: reach out to async storage to see if there's a user already
     let user = false;
     if (user) {
       navigation.replace('Home');
     }
   }, []);
+
+  const login = () => {
+    navigation.replace('Home');
+  }
 
   return (
     <KeyboardAvoidingView behavior='padding' style={styles.container}>
@@ -24,11 +27,11 @@ const LoginScreen = ({ navigation }) => {
 
       <View style={styles.inputContainer}>
         <Input placeholder='Email' autoFocus type='email' value={email} onChangeText={(text) => setEmail(text)} />
-        <Input placeholder='Password' autoFocus type='password' secureTextEntry value={password} onChangeText={(text) => setPassword(text)} />
+        <Input placeholder='Password' autoFocus type='password' secureTextEntry value={password} onChangeText={(text) => setPassword(text)} onSubmitEditing={login} />
       </View>
 
       <Button 
-        onPress={() => navigation.replace('Home')}
+        onPress={login}
         containerStyle={styles.button} 
         title='Login' 
       /> 

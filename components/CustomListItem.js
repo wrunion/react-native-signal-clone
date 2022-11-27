@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { ListItem, Avatar } from '@rneui/themed'
 
 const { Content, Title, Subtitle } = ListItem;
@@ -10,7 +10,6 @@ const CustomListItem = ({ id, title, subtitle, avatarURI }) => {
       <Avatar rounded 
         source={{ uri: avatarURI ? avatarURI : 'https://cdn-icons-png.flaticon.com/512/3237/3237472.png' }}
       />
-
       <Content>
         <Title style={styles.title}>
           {title}
@@ -21,7 +20,7 @@ const CustomListItem = ({ id, title, subtitle, avatarURI }) => {
       </Content>
     </ListItem>
   )
-}
+};
 
 export default CustomListItem
 
