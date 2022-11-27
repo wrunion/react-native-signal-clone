@@ -12,9 +12,7 @@ import { Ionicons, SimpleLineIcons, AntIcons } from '@expo/vector-icons';
 import { sendMessage, sendMessageDev, PRIMARY_BLUE, BACKGROUND_GREY } from '../utils/utils'
 
   let sampleMessages = [
-    { content: 'Hello! How are you?', isSender: true, id: 1, timestamp: '9:45 am' },
-    // { content: 'Good. How are you?', isSender: false, id: 2, timestamp: '10:15 am' },
-    // { content: 'Okay! How is the weather where you are?', isSender: true, id: 3, timestamp: '11:01 am' },
+    { content: 'Hello! How are you?', isSender: true, id: 1, timestamp: '9:45 am' }
   ];
 
 
@@ -33,13 +31,13 @@ const ChatScreen = ({ navigation, route }) => {
     }
     setMessages((messages) => [...messages, { content: input, isSender: false, timestamp }]);
 
+    // To hit the chatbot API
     // const response = await sendMessage(input);
     // setMessages((messages) => [...messages, { content: response, isSender: true, timestamp }]);
 
-    // for dev only
-    setMessages((messages) => [...messages, { content: 'Test response goes here.', isSender: true, timestamp }]);
-
-    console.log(messages);
+    // Tor testing and development, since the chatbot API has a limit of 150 requests/month
+    const testResponse = sendMessageDev();
+    setMessages((messages) => [...messages, { content: testResponse, isSender: true, timestamp }]);
 
     setInput('');
   }
@@ -49,11 +47,6 @@ const ChatScreen = ({ navigation, route }) => {
       title: 'Chat',
       headerBackTitleVisible: true,
       headerTitleAlign: 'left',
-      // headerTitle: () => (
-      //   <View>
-      //     <Avatar />
-      //   </View>
-      // )
     })
   }, [navigation])
   
@@ -67,8 +60,7 @@ const ChatScreen = ({ navigation, route }) => {
       >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <>
-          <ScrollView scrollEnabled contentContainerStyle={{alignItems: 'center', height: '100%'}}>
-
+          <ScrollView>
           {messages.map((message, index) => (
             message.isSender ? 
               <View style={styles.sender} key={index}>
@@ -154,5 +146,17 @@ const styles = StyleSheet.create({
   },
   senderText: {
     color: 'white'
-  }
+  },
+  receiverText: {}
 })
+
+/*
+  TODO BEFORE DEMO: 
+  - fix the auto-focus issue on the chat screen [ ]
+  - if time: have the chat screen auto-scroll on chat
+  - TEST ON DIFFERENT DEVICES INCLUDING ANDROID
+  - figure out how to deploy [ ]
+  - add avatars [ ]
+  - add a README [ ]
+  - clean up code files
+*/
