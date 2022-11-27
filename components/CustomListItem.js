@@ -6,7 +6,7 @@ const { Content, Title, Subtitle } = ListItem;
 
 const CustomListItem = ({ id, title, subtitle, avatarURI }) => {
   return (
-    <ListItem key={id}>
+    <ListItem key={id} bottomDivider>
       <Avatar rounded 
         source={{ uri: avatarURI ? avatarURI : 'https://cdn-icons-png.flaticon.com/512/3237/3237472.png' }}
       />

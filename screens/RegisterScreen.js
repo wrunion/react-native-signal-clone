@@ -1,7 +1,7 @@
 import React, { useState, useLayoutEffect } from 'react';
 import { StyleSheet, View, KeyboardAvoidingView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { Button, Input, Image, Text } from '@rneui/themed'; 
+import { Button, Input, Text } from '@rneui/themed'; 
 
 const RegisterScreen = ({ navigation }) => {
 
@@ -48,9 +48,6 @@ const RegisterScreen = ({ navigation }) => {
 }
 
 export default RegisterScreen;
-
-
-
 
 const styles = StyleSheet.create({
   container: {

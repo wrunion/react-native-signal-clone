@@ -8,8 +8,7 @@ export const BACKGROUND_GREY = '#ECECEC'
 
 export const sendMessage = async (message) => {
   try {
-    const userId = 'testUser1'
-    const uri = `http://api.brainshop.ai/get?bid=170772&key=e5ND9Yg3n0pKqf9i&uid=${userId}&msg=${message}`;
+    const uri = `http://api.brainshop.ai/get?bid=170772&key=e5ND9Yg3n0pKqf9i&uid=testuser1&msg=${message}`;
     const response = await axios.get(uri);
     return response.data.cnt;
   } catch (error) {
