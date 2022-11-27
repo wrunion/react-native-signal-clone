@@ -14,7 +14,9 @@ export const sendMessage = async (message) => {
     const response = await axios.get(uri);
     return response.data.cnt;
   } catch (error) {
-    alert('Something went wrong. Please try again.') 
+    // If something goes wrong with the API call, call the local chatbot function instead.
+    const response = sendMessageDev();
+    return response;
   }
 }
 
@@ -26,9 +28,9 @@ const smalltalkPhrases = [
   "Do you have any pets?",
   "I like chatting with you!",
   'I chat, therefore I am.',
-  "How is your family doing?",
-  "How's the day treating you so far?",
-  "How's the weather where you are?",
+  "Cool me too. How is your family doing?",
+  "I feel you. How's the day treating you so far?",
+  "Nice! How's the weather where you are?",
   "Read any good books latey?",
   "Do you like the songs on the radio?",
   "What's your favorite TV show?"
