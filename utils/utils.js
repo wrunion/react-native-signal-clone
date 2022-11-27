@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 export const SIGNAL_LOGO_URI = 'https://seeklogo.com/images/S/signal-logo-20A1616F60-seeklogo.com.png'
-export const DEFAULT_USER_ICON_URI = 'https://cdn-icons-png.flaticon.com/512/3237/3237472.png'
+// export const DEFAULT_USER_ICON_URI = 'https://cdn-icons-png.flaticon.com/512/3237/3237472.png'
+export const DEFAULT_USER_ICON_URI = 'https://static.vecteezy.com/system/resources/previews/008/302/462/original/eps10-grey-user-icon-or-logo-in-simple-flat-trendy-modern-style-isolated-on-white-background-free-vector.jpg'
 export const PRIMARY_BLACK = '#2F3136'
 export const PRIMARY_BLUE = '#3F6AE5'
 export const BACKGROUND_GREY = '#ECECEC'

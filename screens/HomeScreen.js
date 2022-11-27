@@ -1,10 +1,11 @@
 import React, { useLayoutEffect } from 'react';
-import { View, SafeAreaView, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, SafeAreaView, ScrollView, TouchableOpacity, StyleSheet, Text } from 'react-native';
 import { SimpleLineIcons } from '@expo/vector-icons';
 import { Avatar } from '@rneui/themed'; 
 import CustomListItem from '../components/CustomListItem';
 
 import { DEFAULT_USER_ICON_URI } from '../utils/utils';
+import { CHAT_LOGS } from '../utils/chatLogs'
 
 const HomeScreen = ({ navigation }) => {
 
@@ -39,13 +40,21 @@ const HomeScreen = ({ navigation }) => {
     })
   }, [navigation]);
 
+  console.log(CHAT_LOGS)
+
   return (
     <SafeAreaView>
       <ScrollView>
-        <CustomListItem />
+        {CHAT_LOGS.map(chat => {
+          const { id, title, subtitle, avatarURI } = chat;
+          return <CustomListItem key={id} id={id} title={title} subtitle={subtitle} avatarURI={avatarURI} />
+        })}
       </ScrollView>
     </SafeAreaView>
   )
 };
+
+// id, title, subtitle, avatarURI
+
 
 export default HomeScreen;
