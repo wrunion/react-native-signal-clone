@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, KeyboardAvoidingView } from 'react-native';
 import { Button, Input, Image } from '@rneui/themed'; 
-import { StatusBar} from 'expo-status-bar';
+import { StatusBar } from 'expo-status-bar';
 
 import { SIGNAL_LOGO_URI } from '../utils/utils'
 

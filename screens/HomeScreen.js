@@ -1,5 +1,5 @@
 import React, { useLayoutEffect } from 'react';
-import { View, SafeAreaView, ScrollView, TouchableOpacity, StyleSheet, Text } from 'react-native';
+import { View, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native';
 import { SimpleLineIcons } from '@expo/vector-icons';
 import { Avatar } from '@rneui/themed'; 
 import CustomListItem from '../components/CustomListItem';

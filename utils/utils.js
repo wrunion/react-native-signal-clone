@@ -43,9 +43,3 @@ export const getTimestamp = () => {
   let minutes = date.getMinutes();
   return `${hour <= 12 ? hour : hour - 12}:${minutes < 10 ? '0'+ minutes : minutes } ${hour <= 12 ? 'am' : 'pm'}`;
 }
-
-/*
-Resources:
-- Local chatbox text source: https://github.com/alyssaong1/botframework-smalltalk/blob/master/lib/smalltalk.js
-- Remote chatbot API documentation: https://brainshop.ai/node/262042
-*/
