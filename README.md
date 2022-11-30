@@ -12,7 +12,11 @@ It lets you chat in real time with an AI, powered by [BrainShop AI](https://brai
 
 A development demo via Expo Go is on the way. In the meantime, here are the primary screens:
 
-![Screenshot of app login page with blank input fields](./assets/demo-ss-1.png) ![Screenshot of app login page with email filled in](./assets/demo-ss-2.png)![Screenshot of app home page showing chat contacts](./assets/demo-ss-3.png)![Screenshot of app chat screen with a chat in progress](./assets/demo-ss-4.png)
+<img src="/assets/ss1-81.png" alt="Screenshot of app login page with blank input fields" style="max-width: 393px">
+<img src="/assets/ss2-81.png" alt="" style="max-width: 393px">
+<img src="/assets/ss3-81.png" alt="" style="max-width: 393px">
+<img src="/assets/ss4-81.png" alt="" style="max-width: 393px">
+
 
 
 #### Technologies Used: 
