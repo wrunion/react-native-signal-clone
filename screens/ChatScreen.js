@@ -13,7 +13,7 @@ import { sendMessage, sendMessageDev, PRIMARY_BLUE, BACKGROUND_GREY, getTimestam
 const ChatScreen = ({ navigation }) => {
 
   const [input, setInput] = useState('');
-  const [timestamp, setTimestamp] = useState('9:32 am');
+  const [timestamp, setTimestamp] = useState(() => getTimestamp());
   const [messages, setMessages] = useState([]);
 
   const handleSendMessage = async () => {
