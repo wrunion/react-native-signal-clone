@@ -10,14 +10,7 @@ It lets you chat in real time with an AI, powered by [BrainShop AI](https://brai
 
 #### Demo
 
-A development demo via Expo Go is on the way. In the meantime, here are the primary screens:
-
-<img src="/assets/ss1-81.png" alt="Screenshot of app login page with blank input fields" style="max-width: 393px">
-<img src="/assets/ss2-81.png" alt="" style="max-width: 393px">
-<img src="/assets/ss3-81.png" alt="" style="max-width: 393px">
-<img src="/assets/ss4-81.png" alt="" style="max-width: 393px">
-
-
+A development demo via Expo Go is on the way. 
 
 #### Technologies Used: 
 - [React](https://reactjs.org/)
